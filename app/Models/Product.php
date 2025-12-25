@@ -13,12 +13,16 @@ class Product extends Model
         'main_image',
         'has_variants',
         'is_active',
+        'is_available',
+        'min_order_quantity',
     ];
 
     protected $casts = [
         'has_variants' => 'boolean',
         'is_active' => 'boolean',
+        'is_available' => 'boolean',
         'price' => 'decimal:2',
+        'min_order_quantity' => 'integer',
     ];
 
     public function images()

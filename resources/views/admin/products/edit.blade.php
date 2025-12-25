@@ -269,6 +269,25 @@
                             فعال
                         </label>
                     </div>
+
+                    <div class="form-check form-switch mb-3">
+                        <input type="hidden" name="is_available" value="0">
+                        <input class="form-check-input" type="checkbox" id="is_available"
+                               name="is_available" value="1" {{ $product->is_available ? 'checked' : '' }}>
+                        <label class="form-check-label" for="is_available">
+                            متوفر حالياً
+                        </label>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="min_order_quantity" class="form-label">الحد الأدنى للطلب</label>
+                        <input type="number" class="form-control @error('min_order_quantity') is-invalid @enderror"
+                               id="min_order_quantity" name="min_order_quantity" value="{{ old('min_order_quantity', $product->min_order_quantity ?? 1) }}" min="1">
+                        <small class="text-muted">أقل كمية يمكن طلبها من هذا المنتج</small>
+                        @error('min_order_quantity')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
             </div>
 

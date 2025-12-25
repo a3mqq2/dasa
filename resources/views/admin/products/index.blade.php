@@ -35,6 +35,28 @@
         font-size: 0.75rem;
         padding: 0.25rem 0.5rem;
     }
+    .product-unavailable {
+        position: relative;
+    }
+    .product-unavailable .product-image,
+    .product-unavailable .product-placeholder {
+        filter: blur(3px) grayscale(50%);
+        opacity: 0.6;
+    }
+    .unavailable-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(220, 53, 69, 0.95);
+        color: white;
+        padding: 0.5rem 1.5rem;
+        border-radius: 25px;
+        font-weight: bold;
+        font-size: 1rem;
+        z-index: 10;
+        box-shadow: 0 4px 15px rgba(220, 53, 69, 0.4);
+    }
     @media (max-width: 768px) {
         .product-card {
             margin-bottom: 1rem;
@@ -114,15 +136,23 @@
     @forelse($products as $product)
         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
             <div class="card product-card">
-                @if($product->main_image)
-                    <img src="{{ asset('storage/' . $product->main_image) }}"
-                         alt="{{ $product->name }}"
-                         class="product-image">
-                @else
-                    <div class="product-placeholder">
-                        <i class="ph-duotone ph-image" style="font-size: 48px; opacity: 0.3;"></i>
-                    </div>
-                @endif
+                <div class="{{ !$product->is_available ? 'product-unavailable' : '' }}">
+                    @if($product->main_image)
+                        <img src="{{ asset('storage/' . $product->main_image) }}"
+                             alt="{{ $product->name }}"
+                             class="product-image">
+                    @else
+                        <div class="product-placeholder">
+                            <i class="ph-duotone ph-image" style="font-size: 48px; opacity: 0.3;"></i>
+                        </div>
+                    @endif
+
+                    @if(!$product->is_available)
+                        <div class="unavailable-overlay">
+                            غير متوفر
+                        </div>
+                    @endif
+                </div>
 
                 <div class="card-body">
                     <h6 class="card-title mb-2 text-truncate" title="{{ $product->name }}">
@@ -147,6 +177,13 @@
                         @else
                             <span class="badge bg-secondary">غير فعال</span>
                         @endif
+                    </div>
+
+                    <div class="mb-2">
+                        <small class="text-muted">
+                            <i class="ti ti-shopping-cart me-1"></i>
+                            الحد الأدنى: {{ $product->min_order_quantity ?? 1 }} قطعة
+                        </small>
                     </div>
 
                     @if($product->has_variants)
