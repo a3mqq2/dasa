@@ -260,7 +260,12 @@
 
 @section('content')
 <div class="page-header">
-    <h1><i class="ph-duotone ph-lightning me-2"></i>تسليم فوري</h1>
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+        <h1 class="mb-0"><i class="ph-duotone ph-lightning me-2"></i>تسليم فوري</h1>
+        <a href="{{ route('home') }}" class="btn btn-outline-secondary">
+            <i class="ph-duotone ph-arrow-right me-2"></i>العودة للرئيسية
+        </a>
+    </div>
 </div>
 
 <!-- Filter Section -->

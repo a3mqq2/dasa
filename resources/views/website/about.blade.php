@@ -190,6 +190,11 @@
 
 @section('content')
 <div class="about-header">
+    <div class="d-flex justify-content-center mb-3">
+        <a href="{{ route('home') }}" class="btn btn-outline-secondary btn-sm">
+            <i class="ph-duotone ph-arrow-right me-2"></i>العودة للرئيسية
+        </a>
+    </div>
     <h1>Dasa's Cake</h1>
     <p>حلويات من القلب لأحبائك</p>
 </div>
