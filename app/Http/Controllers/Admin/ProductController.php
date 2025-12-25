@@ -42,10 +42,10 @@ class ProductController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'price' => 'required|numeric|min:0',
-            'main_image' => 'nullable|image|max:2048',
+            'main_image' => 'nullable|image|max:10240',
             'has_variants' => 'boolean',
             'is_active' => 'boolean',
-            'gallery_images.*' => 'nullable|image|max:2048',
+            'gallery_images.*' => 'nullable|image|max:10240',
         ]);
 
         try {
@@ -131,10 +131,10 @@ class ProductController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'price' => 'required|numeric|min:0',
-            'main_image' => 'nullable|image|max:2048',
+            'main_image' => 'nullable|image|max:10240',
             'has_variants' => 'boolean',
             'is_active' => 'boolean',
-            'gallery_images.*' => 'nullable|image|max:2048',
+            'gallery_images.*' => 'nullable|image|max:10240',
         ]);
 
         try {
