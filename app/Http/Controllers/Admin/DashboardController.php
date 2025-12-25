@@ -36,7 +36,9 @@ class DashboardController extends Controller
         // Product statistics
         $totalProducts = Product::where('is_active', 1)->count();
         $lowStockProducts = Product::whereHas('stock', function($q) {
-            $q->havingRaw('SUM(quantity) < 5');
+            $q->select(DB::raw(1))
+              ->groupBy('product_id')
+              ->havingRaw('SUM(quantity) < 5');
         })->count();
 
         // Recent orders
