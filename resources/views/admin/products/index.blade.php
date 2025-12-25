@@ -44,6 +44,14 @@
 @endpush
 
 @section('content')
+<!-- Back Button -->
+<div class="mb-3">
+    <a href="{{ route('admin.dashboard') }}" class="btn btn-outline-secondary">
+        <i class="ti ti-arrow-right me-2"></i>
+        العودة للرئيسية
+    </a>
+</div>
+
 <div class="card mb-3">
     <div class="card-header">
         <div class="d-flex justify-content-between align-items-center">

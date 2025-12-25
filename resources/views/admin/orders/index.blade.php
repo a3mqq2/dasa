@@ -127,6 +127,14 @@
 @section('content')
 <div class="row">
     <div class="col-12">
+        <!-- Back Button -->
+        <div class="mb-3">
+            <a href="{{ route('admin.dashboard') }}" class="btn btn-outline-secondary">
+                <i class="ti ti-arrow-right me-2"></i>
+                العودة للرئيسية
+            </a>
+        </div>
+
         <!-- Filters -->
         <div class="filter-card">
             <form method="GET" action="{{ route('admin.orders.index') }}" class="row g-3">
